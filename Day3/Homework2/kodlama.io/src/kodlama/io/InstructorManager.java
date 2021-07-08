@@ -1,6 +1,6 @@
 package kodlama.io;
 
-public class InstructorManager  {
+public class InstructorManager extends UserManager {
 
 	public void givenHomeWork(Instructor instructor)
 	{
@@ -9,7 +9,7 @@ public class InstructorManager  {
 	
 	public void givenCourse(Instructor instructor)
 	{
-	     System.out.println(instructor.getFirstName()+ "'nýn verdiði kurslar: "+ instructor.getGivenCourse());
+	     System.out.println(instructor.getFirstName()+ "'nÃ½n verdiÃ°i kurslar: "+ instructor.getGivenCourse());
 	     
 	}
 }
