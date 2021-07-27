@@ -1,6 +1,6 @@
 package kodlama.io;
 
-public class StudentManager {
+public class StudentManager extends UserManager {
 
 
 	public void commentStudent(Student student)
