@@ -7,10 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -47,8 +47,8 @@ public class JobSeeker extends User {
     @NotBlank()
 	private String identityNumber;
 	
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern = "yyyy-mm-dd")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	@Column(name="birth_date")
 	@NotBlank()
     @NotEmpty(message = "Doğum Tarihini Giriniz Lütfen")
