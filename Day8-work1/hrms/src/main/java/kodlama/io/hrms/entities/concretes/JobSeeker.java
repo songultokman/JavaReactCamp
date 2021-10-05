@@ -1,6 +1,7 @@
 package kodlama.io.hrms.entities.concretes;
 
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -52,7 +53,7 @@ public class JobSeeker extends User {
 	@Column(name="birth_date")
 	@NotBlank()
     @NotEmpty(message = "Doğum Tarihini Giriniz Lütfen")
-	private Date birthDate;
+	private LocalDateTime birthDate;
 	
 	
    	
