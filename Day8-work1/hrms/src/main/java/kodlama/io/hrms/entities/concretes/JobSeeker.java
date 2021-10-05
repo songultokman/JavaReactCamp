@@ -2,8 +2,6 @@ package kodlama.io.hrms.entities.concretes;
 
 
 import java.time.LocalDateTime;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
