@@ -4,8 +4,6 @@ package kodlama.io.hrms.entities.concretes;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -13,9 +11,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import kodlama.io.hrms.core.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -54,13 +50,5 @@ public class JobSeeker extends User {
 	@Column(name="birth_date")
 	private LocalDate birthDate;
 	
-	@JsonIgnore
-	@OneToOne
-    @JoinColumn(name = "job_seeker_cv_id", referencedColumnName = "id")
-	private JobSeekerCV jobSeekerCV; 
-
-	
-   	
-
 	
 }

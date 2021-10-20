@@ -8,9 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -26,7 +29,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @EqualsAndHashCode
 @Table(name="job_seeker_cvs")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","cv_languages"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class JobSeekerCV {
 	
 	@Id
@@ -34,12 +37,14 @@ public class JobSeekerCV {
 	@Column(name="id")
 	private int id;
 	
+	@Length(max = 300)
 	@Column(name="cover_letter")
 	private String coverLetter;
 	
 	@JsonIgnore
-	@OneToOne(mappedBy="jobSeekerCV")
-	private  JobSeeker jobSeeker;
+	@OneToOne
+    @JoinColumn(name = "job_seeker_id", referencedColumnName = "id")
+	private JobSeeker jobSeeker; 
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="jobSeekerCV")
@@ -56,5 +61,14 @@ public class JobSeekerCV {
     @JsonIgnore
 	@OneToMany(mappedBy="jobSeekerCV")
 	private List<JobSeekerCvWebSite> webSites;
+    
+    @JsonIgnore
+	@OneToMany(mappedBy = "jobSeekerCV")
+	private List<JobSeekerCvImage> images;
 
+    @JsonIgnore
+	@OneToMany(mappedBy = "jobSeekerCV")
+	private List<JobSeekerCvSkill> skills;
+
+    
 }
